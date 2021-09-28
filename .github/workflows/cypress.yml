@@ -9,11 +9,13 @@ jobs:
 
       # Install NPM dependencies, cache them correctly
       - name: Install dependencies
+        working-directory: ./src
         run: yarn
 
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        working-directory: ./src
         with:
           browser: chrome
           headless: true
