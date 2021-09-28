@@ -6,19 +6,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+
       # Install NPM dependencies, cache them correctly
+      - name: Install dependencies
+        run: yarn
+
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: true
-          
-          # build: yarn build
-          # start: yarn start
 
-          build: npm run build
-          start: npm start
-          
+          build: yarn build
+          start: yarn start
+
+          # build: npm run build
+          # start: npm start
+
           # quote the url to be safe against YML parsing surprises
-          wait-on: 'http://localhost:3000'
+          wait-on: "http://localhost:3000"
